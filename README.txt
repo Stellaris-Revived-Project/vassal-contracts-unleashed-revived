@@ -1,0 +1,53 @@
+# <Mod Name>
+
+> This mod is maintained as part of my **Orphaned Stellaris Mods** project, which aims to preserve and keep abandoned community mods compatible with the latest versions of Stellaris.
+
+## About
+
+This repository contains an updated version of **<Mod Name>**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
+Unless otherwise stated, I do **not** claim ownership of the original work. Full credit belongs to the original creator(s).
+
+---
+
+## Credits
+
+**Original Author:** <Author Name>  
+**Original Workshop Page:** <Workshop URL>  
+**Original Source Repository:** <Repository URL (if applicable)>
+
+---
+
+## Current Maintenance
+
+This repository provides:
+- Compatibility updates for newer Stellaris versions
+- Bug fixes
+- Community-requested improvements (where appropriate)
+- Continued maintenance of an otherwise abandoned mod
+
+---
+
+## Reporting Issues
+
+If you encounter a bug or have a suggestion, please open a GitHub Issue or report it in the Discord listed below.
+
+---
+
+## Contact
+
+**Maintainer:** Gregor Samsa
+
+- GitHub: https://github.com/Greg-rSamsa
+- Discord: https://discord.gg/wY2EKWThSZ
+- Steam: https://steamcommunity.com/id/gregor_samsa_II/
+- Email: mainter@gregorsamsa.cc
+
+---
+
+## License
+
+This project is maintained with the express permission of the original author.
+
+Unless otherwise noted, this repository is licensed under the **MIT License**. See the `LICENSE` file for details.
+
+Original authorship is fully credited, and all contributions prior to this repository remain attributed to their respective creators.
