@@ -5,6 +5,7 @@
 ## About
 
 This repository contains an updated version of **Vassal Contracts Unleashed**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
+
 Unless otherwise stated, I do **not** claim ownership of the original work. Full credit belongs to the original creator(s).
 
 ---
@@ -12,6 +13,7 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 ## Credits
 
 **Original Author:** [Darth Tiredlass](https://steamcommunity.com/profiles/76561199145137018)
+
 **Original Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2980767720)
 
 ---
