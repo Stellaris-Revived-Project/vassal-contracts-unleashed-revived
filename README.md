@@ -1,6 +1,6 @@
 # <Mod Name>
 
-> This mod is maintained as part of my **Orphaned Stellaris Mods** project, which aims to preserve and keep abandoned community mods compatible with the latest versions of Stellaris.
+> This mod is maintained as part of the **Stellaris Revived Project**, which aims to preserve and keep abandoned community mods compatible with the latest versions of Stellaris.
 
 ## About
 
