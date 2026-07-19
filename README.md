@@ -12,7 +12,7 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 ## Credits
 
 **Original Author:** [Darth Tiredlass](https://steamcommunity.com/profiles/76561199145137018)
-**Original Workshop Page:** https://steamcommunity.com/sharedfiles/filedetails/?id=2980767720 
+**Original Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2980767720)
 
 ---
 
