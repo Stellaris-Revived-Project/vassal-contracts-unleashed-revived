@@ -1,0 +1,189 @@
+Note: Enabling word wrap if you're using a text viewer that does not naturally support it is a good idea.
+
+This document explains how the testing process in making this mod went, as well as documenting the locations, reasons, and effects of every code change. The goal of this is to allow full transparency of the mod's code changes in a centralized, simple location.
+
+I've also tried to make this document accessible for someone with little or no prior experience modding Stellaris, so that they can follow along with what has been done in the event they wish to make changes, compatibility patches, or updates in the future if I am slow or absent in updating this mod.
+
+The vassal alterations required overwriting two areas, as well as creating localization. The altered file areas are:
+agreement_presets
+agreement_term_values
+
+Note: Testing was done using the origin from "Viable Feudalism and Imperialism - Empire Federation" to spawn with two vassals.
+
+### Protectorate Alterations ###
+File:
+00_agreement_presets
+Values altered:
+@protectorate_tech_threshold 
+@protectorate_tech_switch
+
+### Agreement Freedom Alterations ###
+File: 00_agreement_term_values
+Blocks altered:
+All Blocks under 'Others' - replaced the `Possible` clauses. This was to remove player restrictions on things like subject integration, diplomacy, holdings, etc.
+
+Resource Subsidies:
+All vanilla resource subsidies except research were replaced with individual-resource scale subsidies. Unity and Influence were made available as a subsidy or tax. Influence may be subject to change in the future if balance is desired.
+
+
+### Protectorates Walkthrough ###
+
+1: Removal of protectorate requirements and auto-switching if the subject is behind on tech:
+#@protectorate_tech_threshold in the 00_agreement_presets file
+This used to be coded at 0.4. It is now 0.0001
+In vanilla, a vassal has to be within 60% of the "technological difference" of the overlord. Altering this value means that functionally, you can use the "research all technologies" command at game start with vassals and still not have them automatically turn into protectorates. 
+
+2: Allowing the option of protectorates in (almost) all scenarios:
+#@protectorate_tech_switch in the 00_agreement_presets file
+This used to be coded at 0.5. It is now 0.9999
+In vanilla, there has to be more than a 50% technological difference between vassal and overlord to make them a protectorate Testing showed that by researching a single technology at game start, that created enough of a gulf between the vassal and overlord that the option to convert them to a protectorate appeared.
+
+1-2-A: There does appear to be a behaviour where a high-tech AI overlord does not turn its low-tech vassals into protectorates it is unclear how to revert this behaviour without restricting the freedom of the player.
+
+
+### Agreement Freedom Walkthrough ###
+Note: navigating to Stellaris - common - agreement_term_values - 00_agreement_term_values will help to compare changes.
+
+A Bulwark was used to test agreement restrictions, so that will be the focus here. The same principles apply to the rest of the vassal types.
+
+
+1: Pre-Decided Resource Subsidies and Taxes:
+
+In vanilla, a Bulwark eats up a large portion of the overlord's basic resources. I wanted the player to have the freedom to choose exactly how much they subsidize, or tax, their subjects. 
+
+In v1.0, the vanilla subsidies were still active. Under resource_subsidies_basic, are many other code blocks. For the Bulwark negotiation at game start that was tested, under resource_max there are more blocks. The first block includes:
+#set = @set_factor_1_neg
+Commenting this value out removed the locked 30% minimum basic resource contribution in the agreement terms, and allowed the full range of the slider from contribution to tax to be selected. That was the extent of the testing. There is a second line in the block, referring to the agreement_preset, but it being commented out or not did not appear to make any difference.  
+
+There are further blocks that beneath this that relate to increased experience levels for the Bulwark. In vanilla, Bulwarks cost more as they grow more experienced. Every "set_factor" line was commented out, to avoid the (untested and unconfirmed possibility that a previous agreement with a Bulwark would change to being locked at a high contribution due to an increase in the Bulwark's level. 
+
+Once I confirmed what mechanism locked contributions and taxes to positions on the sliders, I applied this alteration to the rest of the resource types (advanced, research, and strategic) by similarly commenting out any "set_factor" line.
+
+As of VCU version 1.1, most vanilla subsidies have been replaced entirely with new agreement terms that allow selection of individual resources, rather than grouped categories as in vanilla. To bring the loyalty cost of these new term values roughly in line with what they would be in vanilla, the scripted variables (designated with an @) at the top of the 00_agreement_term_values file have been altered, and comments show the specific calculations used to try to balance the changes.
+
+
+2: Other Terms (Expansion Controls, War Joining, Diplomacy, Sensors, Holdings)
+
+In vanilla, there are all sorts of restrictions spread around the subjects. These are coded in the 00_agreement_term_values file, and some of them are really quite confusing to me. For example, Tributaries are currently the only subject type who cannot receive sensor data from their overlord. Which I don't understand at all. I also dislike how there's no ability to restrict expansion for most of the subject types.
+
+Altering the code here to allow full freedom for the player, without impacting AI behaviour, is where the most extensive changes are, and the goals of this document are to be transparent about code changes while also providing a walkthrough on how they happened, so that beginner modders can understand too. 
+
+Shortened summary for transparency:
+Vanilla Agreement Restrictions are a `Possible` (AND) block, typically with multiple `custom_tooltip` (AND) blocks. `OR` blocks were added to the 'Possible' and 'Potential' clauses, ensuring the player always meets the criteria. The original criteria were placed in another `AND` block, or in the case of a list of `NOT` criterias, were consolidated into singular `NOR` blocks for efficiency. 
+
+
+Longer walkthrough for beginner modders on what all that means:
+The simplest way to mimic the changes of this mod would be to do something like the following. For our example, I am going to use the vanilla agreement term value for "joins_subject_wars_none". First, I'll paste the code block here, to make it easier to compare changes. We're only interested in everything inside the "possible" clause, so to save space I'll only copy over that part.
+
+### Vanilla Code Block for "joins_subject_wars_none" ###
+#joins_subject_wars_none = {
+#	possible = {
+#		custom_tooltip = {
+#			fail_text = not_allowed_for_scholarium
+#			NOT = {
+#				agreement_preset = preset_scholarium
+#			}
+#		}
+#		custom_tooltip = {
+#			fail_text = not_allowed_for_protectorate
+#			NOT = {
+#				agreement_preset = preset_protectorate
+#			}
+#		}
+#		custom_tooltip = {
+#			fail_text = not_allowed_for_tributary
+#			NOT = {
+#				agreement_preset = preset_tributary
+#			}
+#		}
+#		custom_tooltip = {
+#			fail_text = not_allowed_for_feudal_society
+#			NOT = {
+#				owner = { has_civic = civic_feudal_realm }
+#			}
+#		}
+#		custom_tooltip = {
+#			fail_text = not_allowed_for_subsidiary
+#			NOT = {
+#				agreement_preset = preset_subsidiary
+#			}
+#		}
+#	}
+#}
+
+Now, this code block might look complex, but it's actually quite simple. First, "possible" is the area that determines if selecting the option is possible. It's an `AND` structure, meaning every following criteria has to come back as "true". So, if you have the Feudal Realm civic, for example, the criteria will come back as false, and you will not be able to take this option regardless of whether or not you pass the other criterias. 
+
+custom_tooltip is also an `AND` structure, but it's different in this regard because when it fails, it shows a tooltip explaining why it failed. The "fail_text" line selects what message will be used to explain why you can't select the option. `NOT` is pretty straightforward, it simply means "not this", so in the feudal realm example, to pass that criteria, you have to not have the feudal realm civic. So to be able to select this option, the subject can't be a subsidiary, tributary, scholarium, or protectorate, and the overlord can't have the feudal realm civic.
+
+If you're new to modding, not very confident what you're doing, or just like me and totally plan to definitely eventually get around to optimizing the Mercatorum patch, there's a quick and easy way to change this code block so that the player can *always* choose the option, but the AI have to follow the original rules. We're going to use an `OR` block, and we're going to put every original criteria inside of an `AND` block inside of the `OR` block. If it sounds confusing, don't worry, I'm about to make an example.
+
+### Altered, Non-Optimized Code Block for "joins_subject_wars_none" ###
+#joins_subject_wars_none = {
+#	possible = {
+#		OR = { 
+#			owner = { is_ai = no }
+#
+#			AND = { 
+#				custom_tooltip = {
+#					fail_text = not_allowed_for_scholarium
+#					NOT = {
+#						agreement_preset = preset_scholarium
+#					}
+#				}
+#				custom_tooltip = {
+#					fail_text = not_allowed_for_protectorate
+#					NOT = {
+#						agreement_preset = preset_protectorate
+#					}
+#				}
+#				custom_tooltip = {
+#					fail_text = not_allowed_for_tributary
+#					NOT = {
+#						agreement_preset = preset_tributary
+#					}
+#				}
+#				custom_tooltip = {
+#					fail_text = not_allowed_for_feudal_society
+#					NOT = {
+#						owner = { has_civic = civic_feudal_realm }
+#					}
+#				}
+#				custom_tooltip = {
+#					fail_text = not_allowed_for_subsidiary
+#					NOT = {
+#						agreement_preset = preset_subsidiary
+#					}
+#				}
+#			}
+#		}
+#	}	
+#}
+
+Now, inside our `OR` block we're putting two things. First, we want to put "owner = { is_ai = no }". In this file, "owner" refers to the overlord. The next thing we're putting into our `OR` block, is an `AND` block, and we're going to just copy and paste all of vanilla's normal requirements inside of that new `AND` block.
+
+In practice, this means that the criteria has changed from "meet vanilla's requirements" to "meet vanilla's requirements OR have an overlord who is being played by a human player". Considering that the human player will always be human, and that the AI will never count as human, this is a sure-fire way of ensuring the player can always bypass the restrictions, while the AI functionally sees no difference.
+
+Of course, it is a little messy. Those custom_tooltips may have been useful back when the player was obligated to follow them, and would've wanted to know why they failed the criteria, but now they're just taking up room. It's not like the AI is going to bother to read them. Some of the criteria are written differently than this, but a lot of them are just a stack of NOT blocks. 
+
+And a stack of individual NOT blocks under an AND means, essentially, "if a single one of these criteria isn't met, it all fails". Which, if we wanted to do this neatly and cleanly, could be replaced by a consolidated `NOR` block. A `NOR` block is the opposite of an `OR`. It means, essentially, "you cannot have this, or this" which is more or less the same function.
+
+So, with the `NOT` blocks stacked individually like that, we can clean it up to look like the code block this mod uses (check z_agreement_term_values_VCU for the whole thing if needed):
+#NOR = {
+#	agreement_preset = preset_subsidiary
+#	agreement_preset = preset_tributary
+#	agreement_preset = preset_protectorate
+#	agreement_preset = preset_scholarium
+#	owner = { has_civic = civic_feudal_realm }
+#} 
+
+And, that's how we got from vanilla to here. 
+
+
+### Now You Know How To Make Stuff Happen ###
+There's no guarantee I'll have the time, energy, or interest to keep any mods I upload updated. 
+
+If you want to change protectorates up a little more, just change those two above values around. If you'd like to for the AI to be able to restrict subject expansion while playing a feudal society, that's easy enough to change, just comment out that line in the code blocks. 
+
+The important thing is to just have fun with it! 
+
+If you have any questions, I am sometimes available in the Stellaris Modding Den Discord Server. Compatibility patching mostly happens for things I intend to play with, personally, but with this code walkthrough it should be a relatively straightforward thing for others to figure out how it's done.

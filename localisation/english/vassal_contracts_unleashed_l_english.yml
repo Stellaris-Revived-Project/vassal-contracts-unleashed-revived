@@ -1,0 +1,17 @@
+﻿l_english:
+
+ #Kindly integrated from Subsidies Sliders Expanded
+ resource_subsidies_energy: "Energy"
+ resource_subsidies_minerals: "Minerals"
+ resource_subsidies_food: "Food"
+ resource_subsidies_alloys: "Alloys"
+ resource_subsidies_consumer_goods: "Consumer Goods"
+ resource_subsidies_volatile_motes: "Volatile Motes"
+ resource_subsidies_exotic_gases: "Exotic Gases"
+ resource_subsidies_rare_crystals: "Rare Crystals"
+ resource_subsidies_minor_artifacts: "Minor Artifacts"
+ resource_subsidies_unity: "Unity"
+ resource_subsidies_influence: "Influence" #VCU this one not from SSE though, I'll admit it's cheaty
+
+ #resource_subsidies: "Contribution"
+ 
