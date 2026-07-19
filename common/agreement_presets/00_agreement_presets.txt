@@ -147,7 +147,15 @@ preset_subsidiary = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -213,7 +221,15 @@ preset_tributary = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -245,7 +261,15 @@ preset_bulwark = {
 	term_data = {
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = -0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = -0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = -0.3
 			}
 		}
@@ -709,7 +733,15 @@ preset_dominion = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -859,7 +891,15 @@ preset_thrall = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -911,7 +951,15 @@ preset_political_client = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -1013,7 +1061,15 @@ preset_satrapy = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -1072,7 +1128,15 @@ preset_relic_satrapy = {
 		}
 		resource_terms = {
 			{
-				key = resource_subsidies_basic
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
 				value = 0.3
 			}
 		}
@@ -1081,5 +1145,113 @@ preset_relic_satrapy = {
 		from = {
 			has_relic = r_khans_throne
 		}
+	}
+}
+
+preset_nomad_tributary = {
+	icon = "GFX_diplomacy_status_is_tributary"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_0
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+		resource_terms = {
+			{
+				key = resource_subsidies_energy
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_minerals
+				value = 0.3
+			}
+			{
+				key = resource_subsidies_food
+				value = 0.3
+			}
+		}
+	}
+	potential = {
+		always = no
+	}
+}
+
+preset_nomadic_purger = {
+	icon = "GFX_diplomacy_status_is_dominion"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_not_do_diplomacy
+			}
+			{
+				key = subject_expand
+				value = subject_cannot_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_none
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_0
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+	potential = {
+		always = no
 	}
 }
