@@ -40,7 +40,7 @@ If you encounter a bug or have a suggestion, please open a GitHub Issue or repor
 - GitHub: https://github.com/Greg-rSamsa
 - Discord: https://discord.gg/wY2EKWThSZ
 - Steam: https://steamcommunity.com/id/gregor_samsa_II/
-- Email: mainter@gregorsamsa.cc
+- Email: maintainer@gregorsamsa.cc
 
 ---
 
