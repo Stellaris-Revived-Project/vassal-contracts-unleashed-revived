@@ -1,10 +1,10 @@
-# <Mod Name>
+# Vassal Contracts Unleashed Revived
 
 > This mod is maintained as part of the **Stellaris Revived Project**, which aims to preserve and keep abandoned community mods compatible with the latest versions of Stellaris.
 
 ## About
 
-This repository contains an updated version of **<Mod Name>**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
+This repository contains an updated version of **Vassal Contracts Unleashed**. The goal is to fix compatibility issues, resolve bugs and ensure the mod remains available for the community.
 Unless otherwise stated, I do **not** claim ownership of the original work. Full credit belongs to the original creator(s).
 
 ---
