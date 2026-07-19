@@ -11,9 +11,8 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 
 ## Credits
 
-**Original Author:** <Author Name>  
-**Original Workshop Page:** <Workshop URL>  
-**Original Source Repository:** <Repository URL (if applicable)>
+**Original Author:** [Darth Tiredlass](https://steamcommunity.com/profiles/76561199145137018)
+**Original Workshop Page:** https://steamcommunity.com/sharedfiles/filedetails/?id=2980767720 
 
 ---
 
@@ -23,7 +22,6 @@ This repository provides:
 - Compatibility updates for newer Stellaris versions
 - Bug fixes
 - Community-requested improvements (where appropriate)
-- Continued maintenance of an otherwise abandoned mod
 
 ---
 
@@ -35,7 +33,7 @@ If you encounter a bug or have a suggestion, please open a GitHub Issue or repor
 
 ## Contact
 
-**Maintainer:** Gregor Samsa
+**Maintained by Gregor Samsa**
 
 - GitHub: https://github.com/Greg-rSamsa
 - Discord: https://discord.gg/wY2EKWThSZ
