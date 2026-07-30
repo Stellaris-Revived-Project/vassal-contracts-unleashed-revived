@@ -16,6 +16,8 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 
 **Original Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2980767720)
 
+**Revived Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3768091191)
+
 ---
 
 ## Current Maintenance
