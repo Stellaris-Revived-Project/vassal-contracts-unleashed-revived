@@ -18,6 +18,8 @@ Unless otherwise stated, I do **not** claim ownership of the original work. Full
 
 **Revived Mod Page:** [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3768091191)
 
+**Revived Source Repository:** [GitHub Repository](https://github.com/Stellaris-Revived-Project/vassal-contracts-unleashed-revived)
+
 You are free to use, modify, copy, and redistribute this mod, including publishing modified or derivative versions, provided that the mod or its derivatives upholds the Paradox Interactive End-User License Agreement.
 Please retain credit to the original creator and, where applicable, the current maintainer. This permission does not grant any rights to Stellaris, Paradox Interactive's assets, or other third-party content.
 
@@ -43,6 +45,7 @@ If you encounter a bug or have a suggestion, please open a GitHub Issue or repor
 **Maintained by Gregor Samsa**
 
 - GitHub: https://github.com/Greg-rSamsa
+- Revival Project GitHub: https://github.com/Stellaris-Revived-Project
 - Discord: https://discord.gg/wY2EKWThSZ
 - Steam: https://steamcommunity.com/id/gregor_samsa_II/
 - Email: maintainer@gregorsamsa.cc
